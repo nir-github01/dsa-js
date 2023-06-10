@@ -995,23 +995,152 @@
 // let n= arr.length;
 // TriangleCounting(arr, n);
 
-function CountTrinagles(arr){
-    var n = arr.length;
-    arr.sort();
-    var count = 0; 
-    for(let i = n-1; i>=1; i--){
-        var l=0, r=i-1;
-        while(l < r) {
-            if(arr[l] + arr[r] > arr[i]){
-                count += r - l;
-                r--;
-            }else{
-                l++;
-            }
-        }
-    }
-    console.log(count);
-}
+// function CountTrinagles(arr){
+//     var n = arr.length;
+//     arr.sort();
+//     var count = 0; 
+//     for(let i = n-1; i>=1; i--){
+//         var l=0, r=i-1;
+//         while(l < r) {
+//             if(arr[l] + arr[r] > arr[i]){
+//                 count += r - l;
+//                 r--;
+//             }else{
+//                 l++;
+//             }
+//         }
+//     }
+//     console.log(count);
+// }
 
-let arr= [ 10, 21, 22, 100, 101, 200, 300 ];
-CountTrinagles(arr);
+// let arr= [ 10, 21, 22, 100, 101, 200, 300 ];
+// CountTrinagles(arr);
+
+
+/** Print all distinct ele4ments of a given integer array */
+
+// function duplicateNum(arr, n){
+  
+//     let A=[];
+//    for(let i=0; i< n -1; i++){
+//         for(let j=i+1; j<n; j++){
+//             if(i != j){
+//             if(arr[i] == arr[j]){
+//                 A.push(arr[i]);
+//             }
+//         }
+//         }
+//    }
+//    console.log(A);
+// }
+// let arr= [1, 2, 3, 1, 3, 2, 5, 3, 6, 7, 6, 5, 4, 7, 6];
+// let n=arr.length;
+// duplicateNum(arr, n);
+
+
+/** Finding duplicate element using indexOf method */
+
+// function duplicateIdxMeth(arr, n){
+//     let A = [];
+//     for(let i=0; i<n; i++){
+//         if(arr.indexOf(arr[i]) !=i){
+//              A.push(arr[i]);
+//         }
+//     }
+//     console.log(A);
+// }
+
+// //Driver Code 
+// let arr =[12, 13, 12, 14, 15, 16, 12, 14, 15];
+// let n= arr.length;
+// duplicateIdxMeth(arr, n);
+
+// const array = [1, 2, 1, 3, 4, 3, 5, 3, 4, 5, 3];
+// const toFindDuplicates = array =>array.filter((item, index)=> array.indexOf(item) != index)
+// const duplicateElements = toFindDuplicates(array);
+// console.log(duplicateElements);
+
+//Program to print all distinct elements in a given array
+
+// function printDistinct(arr, n){
+//     //Pick all elements one by one
+//     for(let i=0; i<n;i++){
+//         //Checked if the picked element is already printed
+//         var j;
+//         for(j=0; j<i; j++){
+//             if(arr[i] == arr[j]){
+//                 break;
+//             }
+//             //If not printed earlier, then print it
+          
+//         }
+//         if(i == j){
+//             console.log(arr[i]);
+//         }
+//     }
+// }
+
+// //Driver Code 
+// let arr = new Array(6, 10, 5, 4, 9, 120, 4, 6, 10);
+// let n= arr.length;
+// printDistinct(arr, n);
+
+
+//Approach -3
+
+// function PrintDistinct(arr, n){
+//     // sort array 
+//     arr.sort((a,b)=>a-b);
+
+//     //Traverse the soreted array
+//     for(let i=0; i<n; i++){
+//         while(i< n-1 && arr[i] == arr[i+1]){
+//             i++;
+//         }
+//         console.log( "Distinct value of an array"+""+arr[i]);
+
+//     }
+//        //console.log("Distinct Value of an array"+ ""+arr)
+// }
+
+// //Driver Code 
+// let arr= [6, 10, 5, 4, 9, 120,4, 6, 10];
+// let n= arr.length;
+// PrintDistinct(arr, n);
+
+// let v= [10, 5, 3, 4, 3, 5, 6];
+// v.sort(function(a, b){return a-b});
+// let s= new Set(v);
+// console.log("All the distinct value give below");
+// s.forEach(function(value){
+//     console.log(value )
+// })
+
+//Approach -4 has Method
+
+// function DistinctVal(arr, n){
+//     let set = new Set();
+//     //Traverse the input array
+//     for(let i=0; i< n; i++){
+//         if(!set.has(arr[i]))
+//         {
+//             set.add(arr[i]);
+//             console.log(arr[i]);
+//         }
+//     }
+// }
+
+// //Driver code
+// let arr= [10, 5, 3, 4, 3, 5, 6];
+// let n= arr.length;
+// DistinctVal(arr, n);
+
+var arr= [10, 5, 3, 4, 3, 5, 6];
+var hm= new Map();
+for(let i=0; i<arr.length; i++){
+    hm.set(arr[i], i);
+}
+var key = hm.keys();
+for(var k of key){
+    console.log(k)
+}
