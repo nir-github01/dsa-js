@@ -912,3 +912,106 @@
 //     console.log(arr[i] + " ");
 //  }
  
+
+/** Count the number of possible triangles */
+
+/**
+ *  Follow the given steps to solve the problem
+ *  1. Run three nested loops each starting from the index of the previous loop
+ *     to the end of the array i.e. run first loop from 0 to n, loop 
+ *      j from i to n, and k from j to n
+ *  2. Check if array[i] + array[j] > array[k], i.e sum of two sides is greater 
+ *     than the third
+ *  3. Check condition 2 for5 all combinations of sides by interchanging
+ *     i, j, k
+ *  4. If all three conditions match, then increase the count
+ *  5. Print Content;
+ * 
+ * 
+ */
+
+
+// function PossibleTriangle (arr, n)
+// {
+//     let count = 0;
+//     for(let i=0; i<n; i++){
+//         for(let j=i+1; j<n; j++){
+//             for(let k=j+1; k< n; k++){
+//                 if(arr[i] + arr[j] >arr[k] && arr[j] + arr[k] > arr[i] && arr[i] + arr[k] > arr[j]){
+//                     count ++;
+//                 }
+//             }
+//         }
+//     }
+//     console.log(count);
+// }
+
+// //Driver Code 
+// let arr =  [ 10, 21, 22, 100, 101, 200, 300 ];
+// let n = arr.length; ;
+// PossibleTriangle(arr, n);
+
+//Approach - 2
+
+// function countTriangle(arr, n){
+//     arr.sort((a, b) => a-b);
+//       let count = 0;
+//     console.log("Sorted array in increasing order"+" " +arr);
+//     for(let i=0; i<n; i++){
+//         for(let j=i+1; j<n; j++){
+            
+//             if(arr[i] + arr[j] > arr[j+1] ){
+//                 count++;
+//             }
+//         }
+//     }
+//     console.log(count)
+// }
+// let arr= [ 10, 21, 22, 100, 101, 200, 300 ];
+// let n= arr.length; 
+// countTriangle(arr, n);
+
+//Approach 3;
+
+// function TriangleCounting(arr, n){
+//       arr.sort((a,b)=> a-b);
+//       let count = 0; 
+//       for(let i=0; i< n; i++){
+//         let k = i + 2;
+//         for(let j=i+1; j<n; j++){
+//             while(k<n && arr[i] + arr[j] > arr[k])
+//                 ++k;
+//                 if(k> j){
+//                     count += k - j-1;
+//                 }
+            
+//         }
+//       }
+//       console.log(count);
+// }
+
+// //Driver Code 
+// let arr= [10, 21, 22, 100, 101, 200, 300];
+// let n= arr.length;
+// TriangleCounting(arr, n);
+
+function CountTrinagles(arr){
+    var n = arr.length;
+    arr.sort();
+    var count = 0; 
+    for(let i = n-1; i>=1; i--){
+        var l=0, r=i-1;
+        while(l < r) {
+            if(arr[l] + arr[r] > arr[i]){
+                count += r - l;
+                r--;
+            }else{
+                l++;
+            }
+        }
+    }
+    console.log(count);
+}
+
+let arr= [ 10, 21, 22, 100, 101, 200, 300 ];
+CountTrinagles(arr);
