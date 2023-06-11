@@ -1401,5 +1401,36 @@
 //     console.log("No subarray with given sum");
 
 // }else{
-//     console.log("Sub array :[" + subarray.join(" ") + "]");;
+//     console.log("Sub array :[" + subarray.join(" ") + "]");
 // }
+
+
+/** ************************************************************* */
+/** $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ */
+
+/** Rearrange an array such that arr[i] = i */
+// 1. check if number exist then swap on same position;
+// 2. if number is not exist of specific position replace with -1;
+
+// function rearrangeWithPosition(arr, n){
+//     for(let i=0; i<n; i++){
+//           for(let j=0; j<n; j++){
+//           if(arr[i] > n-1){
+//                 arr[i] = -1;
+//             }else if(arr[i] < n-1){
+//                  if(i == arr[j]){
+//                     let temp = arr[i];
+//                     arr[i] = arr[j];
+//                     arr[j] = temp;
+
+//                 }
+//             }
+//         }
+//     }
+//     console.log(arr);
+
+// }
+
+// let arr= [ 12, 23, 24, 34, 3, 1, 2, 5, 0, 4, 6, 7];
+// let n= arr.length;
+// rearrangeWithPosition(arr, n);
