@@ -1135,12 +1135,46 @@
 // let n= arr.length;
 // DistinctVal(arr, n);
 
-var arr= [10, 5, 3, 4, 3, 5, 6];
-var hm= new Map();
-for(let i=0; i<arr.length; i++){
-    hm.set(arr[i], i);
+// var arr= [10, 5, 3, 4, 3, 5, 6];
+// var hm= new Map();
+// for(let i=0; i<arr.length; i++){
+//     hm.set(arr[i], i);
+// }
+// var key = hm.keys();
+// for(var k of key){
+//     console.log(k)
+// }
+
+
+/**Find non repeating elements in array  */
+
+
+function repeatArray(arr, n){
+    let A= new Array();
+   //sorting array
+    arr.sort((a,b) => a-b)
+    for(let i=0; i<n; i++){
+        let count =0;
+        for(let j=0; j<n; j++){
+                if(arr[i] ==arr[j]){
+                  count++;   
+                }
+        }
+        if(count == 1){
+            A.push(arr[i]);
+            console.log("Non repeating numbers in array->"+" "+arr[i]);
+        }
+    }
+    console.log("Non repedating numbers in array"+" -> "+"[" +A +"]")
+    console.log("sorted array"+arr);
 }
-var key = hm.keys();
-for(var k of key){
-    console.log(k)
-}
+
+let arr= [1, 2, 3, 4, 1, 2, 3, 4, 6, 3, 3, 4, 4, 5, 6, 6, 7, 8, 9];
+let n= arr.length;
+repeatArray(arr, n);
+
+
+
+
+
+
