@@ -1149,32 +1149,257 @@
 /**Find non repeating elements in array  */
 
 
-function repeatArray(arr, n){
-    let A= new Array();
-   //sorting array
-    arr.sort((a,b) => a-b)
-    for(let i=0; i<n; i++){
-        let count =0;
-        for(let j=0; j<n; j++){
-                if(arr[i] ==arr[j]){
-                  count++;   
-                }
-        }
-        if(count == 1){
-            A.push(arr[i]);
-            console.log("Non repeating numbers in array->"+" "+arr[i]);
-        }
-    }
-    console.log("Non repedating numbers in array"+" -> "+"[" +A +"]")
-    console.log("sorted array"+arr);
-}
+// function repeatArray(arr, n){
+//     let A= new Array();
+//    //sorting array
+//     arr.sort((a,b) => a-b)
+//     for(let i=0; i<n; i++){
+//         let count =0;
+//         for(let j=0; j<n; j++){
+//                 if(arr[i] ==arr[j]){
+//                   count++;   
+//                 }
+//         }
+//         if(count == 1){
+//             A.push(arr[i]);
+//             console.log("Non repeating numbers in array->"+" "+arr[i]);
+//         }
+//     }
+//     console.log("Non repedating numbers in array"+" -> "+"[" +A +"]")
+//     console.log("sorted array"+arr);
+// }
 
-let arr= [1, 2, 3, 4, 1, 2, 3, 4, 6, 3, 3, 4, 4, 5, 6, 6, 7, 8, 9];
-let n= arr.length;
-repeatArray(arr, n);
-
-
+// let arr= [1, 2, 3, 4, 1, 2, 3, 4, 6, 3, 3, 4, 4, 5, 6, 6, 7, 8, 9];
+// let n= arr.length;
+// repeatArray(arr, n);
 
 
+/** 
+ * 1. Traverse all elements and put them in a hash table. Element is used 
+ *     as key and the count of occurances is used as the value in the table.
+ * 2.Traverse the array again and print the element with count 1 in the
+ * hash table.
+ */
+
+// function findSingle(arr, n){
+//        //Do xor of all elements and return 
+//        let res = arr[0];
+//        for(let i=1; i< n; i++){
+//         res = res ^ arr[i];
+//        }
+//       return res;
+// }
+
+// //Driver Code
+// let arr= [1, 2, 3, 2, 4, 3, 6, 5, 4];
+// let n= arr.length;
+// console.log("Elements occurance one time are : ->" + findSingle(arr, n));
 
 
+//Approach -3 using binary methods;
+
+// function findSingleElements(arr, n){
+//     let low=0; 
+//     let high= n - 1;
+//     let mid;
+//     // arr.sort((a, b) => a-b)
+//     while(low <= high) 
+//     {
+//         mid=(low + high) /2;
+//         if(arr[mid] = arr[mid^1]){
+//             low = mid + 1;
+
+//         }else{
+//             high = mid - 1;
+//         }
+//     }
+//     return arr[low];
+// }
+
+// //Driver code
+ 
+// let arr = [12, 3, 21, 3, 4, 5, 6, 6, 54,21];
+// let n= arr.length;
+// arr = arr.sort(function(a, b){return a-b})
+// console.log(findSingleElements(arr, n));
+
+
+// function singlElement(arr, n){
+//     let mm= new Map();
+//     for(let i=0; i<n; i++){
+//         if(mm.has(arr[i])){
+//             mm.set(arr[i], mm.get(arr[i]) + 1);
+//         }else{
+//             mm.set(arr[i], 1);
+//         }
+//     }
+//     //Iterarting over map
+//     for(let [key, value] of mm.entries()){
+//         if(value == 1){
+//             return key;
+//         }
+//     }
+// }
+
+// //Driver code 
+// let arr = [1, 2, 3, 4 ,5, 6,7, 3]
+// let n= arr.length; 
+// console.log(singlElement(arr, n));
+
+
+/** Leaders elements */
+
+
+//Approacch -1 ;
+
+// function printLeaders(arr, n) {
+//     for(let i=0; i< n; i++){
+//         for(let j= i+ 1; j<n; j++){
+//             if(arr[i] <= arr[j]){
+//                 break;
+//             }
+           
+//             if(j==n){
+//                 console.log(arr[i]);
+//             }
+//         }
+  
+//     }
+
+//     }
+//  //Driver Code 
+//   let arr= [12, 3, 4, 5,6 , 7,8 , 2, 3, 4,5 ,6 ];
+//   let n= arr.length;
+//   printLeaders(arr, n);
+
+//Approach - 2
+
+// function printLeaders(arr, n){
+//     let max_form_right = arr[n-1];
+
+//     /**Rightmost elements is always leader */
+
+//     console.log(max_form_right + " ");
+//     for(let i=n-2; i>=0; i--){
+//         if(max_form_right < arr[i]){
+//             max_form_right = arr[i];
+//             console.log(max_form_right+ " ");
+//         }
+//     }
+// }
+
+// //Driver Code 
+//  let arr = [12, 23, 12, 34, 23, 34, 35];
+//  let n= arr.length;
+//  printLeaders(arr, n);
+
+
+// function printLeaders(arr, n) {
+//      let stack = [];
+//      stack.push(arr[n-1]);
+
+//      for(let i= n-2; i>=0; i--){
+//         let temp = stack.pop();
+//         stack.push(temp);
+//         if(arr[i] >=temp){
+//             stack.push(arr[i]);
+//         }
+//      }
+//      while(stack.length > 0){
+//         console.log(stack.pop());
+//      }
+// }
+
+// //Driver Code
+
+// let arr= [12, 2,3, 43, 21, 23, 24, 25];
+// let n= arr.length;
+// printLeaders(arr, n);
+
+/** Find Subarray with given sum | Set 1 Non-negative numbers */
+
+// function subArraySum(arr, n, sum){
+//         for(let i=0; i< n; i++){
+//             let currentSum = arr[i];
+//             if(currentSum == sum){
+//                 console.log("Sum found at indexes" + i)
+//                     return;
+//                 }else{
+//                     for(let j=i+1; j< n; j++){
+//                         currentSum  += arr[j];
+//                         if(currentSum == sum){
+//                             console.log("Sum found b/w indexes " + i +"and" + j);
+//                             return ;
+
+//                         }
+//                     }
+//                 }
+//             }
+//             console.log("No Subbarray found");
+//             return;
+//         }
+
+
+//         let arr = [12, 2,3 , 4, 5, 56, 67];
+//         let n= arr.length;
+//         let sum = 60;
+//         subArraySum(arr, n);
+
+// function subArraySum(arr, n, sum){
+//     let currentSum = arr[0], start = 0, i;
+
+//     //Pick a starting point
+
+//     for(let i=1; i<=n; i++){
+//         while(currentSum > sum && start < i - 1) {
+//             currentSum = currentSum - arr[start];
+//             start++;
+//         }
+
+//         if(currentSum == sum ) {
+//             let p = i - 1;
+//             console.log("Sum found between indexes" + start + "and" + p+"<br>");
+//             return 1;
+//         }
+
+//         if(i< n){
+//             currentSum = currentSum + arr[i];
+
+//         }
+//     }
+//     console.log("No subarray found");
+//     return 0;
+// }
+
+// let arr= [ 15, 2, 4, 8, 9, 5, 10, 23];
+// let n= arr.length;
+// let sum = 23;
+// subArraySum(arr, n, sum);
+
+//Approach -3
+
+// function findSubarrayWithGivenSum(arr, sum){
+//     let map = new Map();
+//     let currentSum = 0;
+
+//     for(let i=0; i< arr.length; i++){
+//         currentSum += arr[i];
+
+//         if(map.has(currentSum - sum)) {
+//             return arr.slice(map.get(currentSum - sum) + 1, i+ 1);
+
+//             map.set(currentSum, i);
+//         }
+       
+//     }
+//     return [];
+// }
+
+// let arr= [15, 2, 4, 8, 9, 5, 10, 25];
+// let subarray = findSubarrayWithGivenSum(arr, 23);
+// if(subarray.length === 0){
+//     console.log("No subarray with given sum");
+
+// }else{
+//     console.log("Sub array :[" + subarray.join(" ") + "]");;
+// }
