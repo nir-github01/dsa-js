@@ -1415,7 +1415,7 @@
 // function rearrangeWithPosition(arr, n){
 //     for(let i=0; i<n; i++){
 //           for(let j=0; j<n; j++){
-//           if(arr[i] > n-1){
+//           if(arr[i] > n-1 ){
 //                 arr[i] = -1;
 //             }else if(arr[i] < n-1){
 //                  if(i == arr[j]){
@@ -1434,3 +1434,126 @@
 // let arr= [ 12, 23, 24, 34, 3, 1, 2, 5, 0, 4, 6, 7];
 // let n= arr.length;
 // rearrangeWithPosition(arr, n);
+
+// function fixPositionWithNum(arr, n){
+//     for(let i=0; i<n; i++){
+//         if(arr[i] !=-1 && arr[i] !=i){
+//             let x = arr[i];
+//             while(arr[x] !=-1 && arr[x] !=x){
+//                 let y = arr[x];
+//                 arr[x] = x;
+//                 x=y;
+//             }
+//             arr[x] = x;
+//             if(arr[i] != i){
+//                 arr[i] = -1;
+//             }
+//         }
+//     }
+// }
+
+// //Driver code
+// let arr = new Array(2, 3, 4, 5, 6, 1, 0, 6, 7, 8);
+// let n= arr.length;
+// fixPositionWithNum(arr, n);
+// for(let i=0; i<n; i++){
+//     console.log(arr[i]);
+// }
+
+/************************************ */
+
+//Approach - 3 using has methods
+
+// function fixPositionNum(arr, n){
+//     let s= new Set();
+
+//     //Storing all the values in the HashSet
+//     for(let i=0; i<n; i++)
+//     {
+//         s.add(arr[i]);
+//     }
+
+//     for(let i=0; i<n; i++){
+//         if(s.has(i) ){
+//             arr[i] = i;
+//         }else{
+//             arr[i] = -1;
+//         }
+//         return arr;
+//     }
+// }
+
+// let arr = [1, 2, 3, 1, 4, 2, 5, 6, 7, 89, 0];
+// let n= arr.length;
+// let ans =fixPositionNum(arr, n);
+// for(let i=0; i<ans.length; i++){
+//     console.log(arr[i]);
+// }
+
+/*************************************** */
+
+//Rearrange positive and negative numbers
+
+// function rearrange(arr, n){
+//     let i=-1, temp = 0;
+//     for(let j=0; j<n; j++){
+//         if(arr[j]> 0) {
+//             i++;
+//             temp= arr[i];
+//             arr[i] = arr[j];
+//             arr[j] = temp;
+
+//         }
+//     }
+
+//     let pos= i + 1; neg = 0;
+//     while(pos < n && neg < pos && arr[neg] < 0){
+//         temp = arr[neg];
+//         arr[neg] = arr[pos];
+//         arr[pos] = temp;
+//         pos ++;
+//         neg += 2;
+//     } 
+// }
+
+// //A utility function to print an array
+// function printArray(arr, n) {
+//     for(let i=0; i<n; i++){
+//         console.log(arr[i] + " ");
+//     }
+// }
+// //Driver code 
+// let arr = [-1, 2, -3, -6, 5, 3, 2, 1];
+// let n = arr.length;
+// rearrange(arr, n);
+// printArray(arr, n);
+
+/**** ################################# */
+//Approach -2
+
+//1. function
+//2. Itterare each and every elements
+//3. Using nested loop
+//4. Outer loop iterrate all array elements
+//5. Inner Loop iterrate all elements according to requirements
+
+function RearrangeNum(arr, n){
+    let temp;
+    for(let i=0; i<n; i++){
+        for(let j=i+1; j<n; j++)
+        {
+            if( arr[j] < 0){
+                temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+    }
+    console.log(arr);
+}
+
+//Driver Code 
+
+let arr = [2, 3, 4, 1, -1, -3, -2, -5, 7, 8, 9];
+let n = arr.length;
+RearrangeNum(arr, n);
