@@ -1537,23 +1537,211 @@
 //4. Outer loop iterrate all array elements
 //5. Inner Loop iterrate all elements according to requirements
 
-function RearrangeNum(arr, n){
-    let temp;
-    for(let i=0; i<n; i++){
-        for(let j=i+1; j<n; j++)
-        {
-            if( arr[j] < 0){
-                temp = arr[i];
-                arr[i] = arr[j];
-                arr[j] = temp;
-            }
-        }
-    }
-    console.log(arr);
-}
+// function RearrangeNum(arr, n){
+//     let temp;
+//     for(let i=0; i<n; i++){
+//         for(let j=i+1; j<n; j++)
+//         {
+//             if( arr[j] < 0){
+//                 temp = arr[i];
+//                 arr[i] = arr[j];
+//                 arr[j] = temp;
+//             }
+//         }
+//     }
+//     console.log(arr);
+// }
 
-//Driver Code 
+// //Driver Code 
 
-let arr = [2, 3, 4, 1, -1, -3, -2, -5, 7, 8, 9];
-let n = arr.length;
-RearrangeNum(arr, n);
+// let arr = [2, 3, 4, 1, -1, -3, -2, -5, 7, 8, 9];
+// let n = arr.length;
+// RearrangeNum(arr, n);
+
+
+/********************************** */
+
+// function reorder(arr, index, n){
+//     var temp =[...Array(n)];
+  
+//     for(var i=0; i< n; i++){
+//         temp[index[i]] = arr[i];
+//         console.log(temp[index[i]]);
+//     }
+//     console.log(temp);
+//     console.log(index);
+//     console.log(arr);
+
+//     //Copy temp[] to arr[];
+
+//     for(var i=0; i< n; i++) {
+//         arr[i] = temp[i];
+//         index[i] = i;
+//     }
+// }
+
+// //Driver Programm
+// var arr = [50, 40, 70, 60, 90]
+// var index= [3, 0, 4, 1, 2];
+// var n = arr.length;
+// reorder(arr, index, n);
+// console.log("Reorder array is:");
+// console.log("<br>");
+// console.log("Modified Index array is ");
+// for(var i= 0; i<n; i++){
+//     console.log(index[i] + " ");
+// }
+
+/** ######################################## */
+//Approach -2
+
+/** Algorithm 
+ * 
+ * 1. Do following for every element arr[i];
+ *  a) while index[i] is not equal to i;
+ *      i) Store array and index values of the target (or correct) position
+ *         where arr[i] should be placed
+ *       The correct position for arr[i] is index[i];
+ *      ii) Place arr[i] at ites correct position. Also
+ *          Update index  value of correct position.
+ *      iii) Copy old values of correct position (stored in step(i) to arr[i])
+ *          and index[i] as the while loop continues for i.
+ */
+
+//Function to reorder elements of arr[] according to index[]
+
+// function reorder(arr, index, n) {
+//     //Fix all elements one by one
+//       for(let i=0; i<n; i++){
+//         //While index[i] and arr[i] are not fixed
+//         while(index[i] != i)
+//         {
+//             //Store values of the target(or correct)
+//             //Position before placing arr[i] there;
+//             let oldTargetI = index[index[i]];
+//             let oldTargetE = arr[index[i]];
+
+//             /** Place arr[i] at its target (or correct) position. also copy corrected index for new position */
+
+//             arr[index[i]] = arr[i];
+//             index[index[i]] = index[i];
+            
+//             //Copy old target values to arr[i] and index[i];
+//             index[i] = oldTargetI;
+//             arr[i]  = oldTargetE;
+//         }
+//       }
+
+//       console.log(arr);
+//       console.log(index);
+// }
+
+// //Driver code
+//  let arr= [50, 40, 70, 60, 90];
+//  let index = [3, 0, 4, 1, 2]
+//  let n= arr.length;
+
+// reorder(arr, index,  n);
+
+/***************************************** */
+
+//Approach -3
+
+// let heapSize;
+// function heapify(arr, index, i){
+//     let largest = i;
+//     //left child in 0 based indexing
+//      let left = 2 * i + 1;
+
+//      //right child in 1 based indexing 
+//      let right = 2 * i + 2;
+
+//      //Find largest index from root left and right child
+//      if(left < heapSize && index[left] > index[largest])
+//      {
+//         largest = left; 
+
+//      }
+//      if(right < heapSize && index[right] > index[largest])
+//      {
+//         largest = right;
+//      }
+
+//      if(largest != i){
+//         //swap arr whenever index is swapped
+//         let temp = arr[largest];
+//         arr[largest] = arr[i];
+//         arr[i] = temp;
+
+//         temp = index[largest];
+//         index[largest] = index[i];
+//         index[i] = temp;
+
+//         heapify(arr, index, largest);
+//      }
+// }
+
+// function heapSort(arr, index, n){
+//     //Build Heap 
+//     for(let i=(n-1) /2; i>=0; i--){
+//         heapify(arr, index, i);
+//     }
+//     /** Swap the largest element of index(first element) with the last elemnent */
+//     for(let i= n- 1; i> 0; i--){
+//         let temp = index[0];
+//         index[0] = index[i];
+//         index[i] = temp;
+
+//         heapSize --;
+//         heapify(arr, index, 0);
+
+//     }
+//     console.log(arr)
+//     console.log(index);
+// }
+
+// //Driver code 
+// let arr = [50, 40, 70, 60, 90];
+// let index = [3, 0, 4, 1,2];
+// let n = arr.length;
+// heapSize = n;
+// heapSort(arr, index, n)
+
+/********************************************* */
+
+//Approach - 3
+
+// function reorderArrayNindex(arr, index_arr, n){
+//     for(let i=0; i<n; i++){
+//         //while index[i] and arr[i] are not fixed
+//         while(index_arr[i] != i) 
+//         {
+//             let temp = arr[i]; 
+//             arr[i] = arr[index_arr[i]];
+//             arr[index_arr[i]] =temp;
+
+//             let temp_1 = index_arr[i];
+//             index_arr[i] = index_arr[index_arr[i]];
+//             index_arr[index_arr[i]] = temp_1;
+//         }
+//     }
+//     console.log("ReOrder array according to indexing"+" >"+arr);
+//     console.log("Reaarange indexing" +" " + index_arr);
+// }
+
+// let arr= [50, 40, 70, 60, 90];
+// let n = arr.length; 
+// let index_arr = [3, 2, 0, 1, 4]
+// reorderArrayNindex(arr, index_arr, n);
+
+// console.log("Reordered array is: <br>");
+// for(let i=0; i< n; i++){
+//     console.log(arr[i]);
+// }
+
+// console.log("Modified Index array is : <br>");
+
+// for(let i=0; i< n; i++){
+//     console.log(index[i]);
+// }
+
