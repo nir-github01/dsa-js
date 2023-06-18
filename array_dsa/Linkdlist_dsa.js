@@ -544,3 +544,304 @@
 // push(1);
 
 // console.log("Count of node is" +" "+ getCount());
+
+/** #################################################### */
+/** Follow the steps below to solve the problem
+ * 
+ * 1. Initialize three pointers prev as NULL, curr as head, and next as NULL
+ * 2.Iterate through the linked list, In a loop, do the following
+ *   a) Before changing the next of curr, store the next node
+ *       i) next = curr -> next
+ *   b) Now update the next pointer of curr to the prev
+ *      ii) curr -> next = prev
+ *   c) Update prev as curr and curr as next
+ *       i)  prev = curr
+ *       ii) curr = next
+ */
+// var head;
+
+// class Node{
+//      constructor(val){
+//           this.data = val;
+//           this.next = null;
+//      }
+// }
+
+// /** Function to reverse the linked list */
+
+// function reverse(node){
+//      var prev = null;
+//      var current = node;
+//      var next = null;
+
+//      while(current != null){
+//           next = current.next;
+//           current.next = prev;
+//           prev = current;
+//           current = next;
+//      }
+//      node  = prev ;
+//      return node ;
+
+// }
+
+// /** Print content of double linked list */
+
+// function printList(node)
+// {
+//      while(node !=null){
+//           console.log(node.data + " ");
+//           node = node.next;
+//      }
+// }
+
+// //Driver code 
+// head = new Node(85);
+// head.next = new Node(15);
+// head.next.next = new Node(4);
+// head.next.next.next = new Node(20);
+
+// console.log("Given linked List");
+// printList(head);
+// head = reverse(head);
+// console.log("\n");
+// console.log("Reversed linked list \n");
+// printList(head);
+
+/** $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ */
+
+/** Reverse Linked List Using Recursion 
+ * 
+ * 1. Divide the list in two parts - first node and rest of the linked list
+ * 2. Call reverse for the rest of the linked list
+ * 3. Link the rest linked list to first
+ * 4. Fix head pointer to NULL
+*/
+
+
+// var head;
+// class Node{
+//      constructor(val){
+//           this.data = val;
+//           this.next = null;
+//      }
+// }
+
+// function reverse(head){
+//      if(head == null || head.next == null){
+//           return head;
+//      }
+
+//      /** 
+//       * reverse the list and put the first element at the end
+//       */
+
+//      var rest = reverse(head.next);
+//      head.next.next = head;
+
+//      head.next = null;
+
+//      //fix the head pointer
+
+//      return rest;
+// }
+
+// /** Function to print linked list */
+
+// function print() {
+//      var temp = head;
+//      while(temp != null){
+//           console.log(temp.data + " ");
+//           temp = temp.next;
+//      }
+
+// }
+
+// function push(data) {
+//      temp = new Node(data);
+//      temp.next = head;
+//      head = temp;
+// }
+
+// //Driver code
+
+// push(20);
+// push(4);
+// push(15);
+// push(85);
+
+// console.log("Given linked list")
+// print();
+// head = reverse(head);
+// console.log("Reversed Linked List");
+// print();
+
+/*** ###################################### */
+
+/**
+ * 1. First update with next node of current i.e next = current-> next;
+ * 2. Now make a reverse link from current node to previous 
+ * node curr->next = prev
+ * 3. If the visited node is the last node then just make a reverse
+ *   link from the current node to previous node and update
+ *   head.
+ */
+
+// var head ;
+// class Node{
+//      constructor(val) {
+//           this.data = val;
+//           this.next = null;
+//      }
+// }
+
+// /** 
+//  * A simnple and tail recursive function to reverse a linked list. prev is passed 
+//  * as NULL initially
+//  */
+
+// function reverseUtil(curr, prev){
+//      /** If head is initially null OR list is empty */
+//           if(head == null){
+//                return head;
+//           }
+//           /** If last node mark it head */
+//           if(curr.next == null){
+//                head = curr;
+
+//                /** Update next to prev node */
+
+//                curr.next = prev;
+//                return head;
+//           }
+
+//         /** Save curr-> next node for recursive call */
+//         var next1 = curr.next;
+        
+//         /** and Update next .... */
+
+//         curr.next = prev;
+
+//         reverseUtil(next1, curr);
+//         return head;
+// }
+
+// //prints content of var linked list
+// function printList(node){
+//      while(node != null){
+//           console.log(node.data + " ");
+//           node = node.next;
+//      }
+// }
+
+// //Driver code
+// var head = new Node(1);
+// head.next = new Node(2);
+// head.next.next = new Node(3);
+// head.next.next.next= new Node(4);
+
+// console.log("Original linked list");
+// printList(head);
+// var res = reverseUtil(head, null);
+// console.log("Reversed linked list");
+// printList(res)
+
+
+/** ########################################### */
+
+/**
+ * Reverse a linked list using Stack
+ * 
+ * 1. Store the nodes (values and address) in the stack until all
+ *    the values are entered.
+ * 2. Once all entries are done, Update the Head pointer to the 
+ *    last location (i.e. the last value).
+ * 3. Start popping the nodes (value and address) and store
+ *     them in the same order until the stack is empty.
+ * 4. Update the next pointer of last Node in the stack by NULL.
+ */
+
+
+class Node{
+     constructor(val){
+          this.data = val;
+          this.next = null;
+     }
+}
+
+var head = null; 
+
+//Function to reverse the linked list
+
+function reverseLL()
+{
+
+     //Create a stack "s" of Node type
+
+     var s = [];
+     var temp =  head;
+     while(temp.next != null){
+          s.push(temp);
+          temp = temp.next;
+     }
+
+     head = temp;
+     while(s.length !=0)
+     {
+          /**
+           * Store the top value in list
+           */
+
+          temp.next = s.pop();
+
+          /**
+           * Update the next pointer in the list
+           */
+
+          temp = temp.next;
+     }
+     temp.next = null;
+
+}
+
+//Function to Display the elements in list
+
+function printList (temp){
+     while(temp != null){
+          console.log(temp.data + " ");
+          temp = temp.next;
+     }
+}
+
+//Program to insert back of the linked list
+
+function insert_back(value) {
+
+     var temp = new Node();
+     temp.data = value;
+     temp.next = null;
+
+     //If *head equals to null
+     if(head == null){
+          head = temp;
+          return;
+     }else{
+          var last_node = head; 
+          while(last_node.next != null)
+          {
+               last_node = last_node.next;
+          }
+          last_node.next = temp;
+          return;
+     }
+} 
+
+insert_back(1);
+insert_back(2);
+insert_back(3);
+insert_back(4);
+console.log("Given linked list\n");
+printList(head);
+reverseLL();
+console.log("<br/>Reversed linked list\n");
+printList(head);
