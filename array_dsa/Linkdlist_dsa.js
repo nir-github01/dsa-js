@@ -762,86 +762,443 @@
  */
 
 
-class Node{
-     constructor(val){
-          this.data = val;
-          this.next = null;
-     }
-}
+// class Node{
+//      constructor(val){
+//           this.data = val;
+//           this.next = null;
+//      }
+// }
 
-var head = null; 
+// var head = null; 
 
 //Function to reverse the linked list
 
-function reverseLL()
-{
+// function reverseLL()
+// {
 
-     //Create a stack "s" of Node type
+//      //Create a stack "s" of Node type
 
-     var s = [];
-     var temp =  head;
-     while(temp.next != null){
-          s.push(temp);
-          temp = temp.next;
-     }
+//      var s = [];
+//      var temp =  head;
+//      while(temp.next != null){
+//           s.push(temp);
+//           temp = temp.next;
+//      }
 
-     head = temp;
-     while(s.length !=0)
-     {
-          /**
-           * Store the top value in list
-           */
+//      head = temp;
+//      while(s.length !=0)
+//      {
+//           /**
+//            * Store the top value in list
+//            */
 
-          temp.next = s.pop();
+//           temp.next = s.pop();
 
-          /**
-           * Update the next pointer in the list
-           */
+//           /**
+//            * Update the next pointer in the list
+//            */
 
-          temp = temp.next;
-     }
-     temp.next = null;
+//           temp = temp.next;
+//      }
+//      temp.next = null;
 
-}
+// }
 
-//Function to Display the elements in list
+// //Function to Display the elements in list
 
-function printList (temp){
-     while(temp != null){
-          console.log(temp.data + " ");
-          temp = temp.next;
-     }
-}
+// function printList (temp){
+//      while(temp != null){
+//           console.log(temp.data + " ");
+//           temp = temp.next;
+//      }
+// }
 
-//Program to insert back of the linked list
+// //Program to insert back of the linked list
 
-function insert_back(value) {
+// function insert_back(value) {
 
-     var temp = new Node();
-     temp.data = value;
-     temp.next = null;
+//      var temp = new Node();
+//      temp.data = value;
+//      temp.next = null;
 
-     //If *head equals to null
-     if(head == null){
-          head = temp;
-          return;
-     }else{
-          var last_node = head; 
-          while(last_node.next != null)
-          {
-               last_node = last_node.next;
-          }
-          last_node.next = temp;
-          return;
-     }
-} 
+//      //If *head equals to null
+//      if(head == null){
+//           head = temp;
+//           return;
+//      }else{
+//           var last_node = head; 
+//           while(last_node.next != null)
+//           {
+//                last_node = last_node.next;
+//           }
+//           last_node.next = temp;
+//           return;
+//      }
+// } 
 
-insert_back(1);
-insert_back(2);
-insert_back(3);
-insert_back(4);
-console.log("Given linked list\n");
-printList(head);
-reverseLL();
-console.log("<br/>Reversed linked list\n");
-printList(head);
+// insert_back(1);
+// insert_back(2);
+// insert_back(3);
+// insert_back(4);
+// console.log("Given linked list\n");
+// printList(head);
+// reverseLL();
+// console.log("<br/>Reversed linked list\n");
+// printList(head);
+
+
+/** ############################################ */
+
+/**
+ * Delete from a Linked List
+ * 
+ * delete an element in a list from
+ * 
+ * 1. Beginning
+ * 2. End
+ * 3. Middle
+ */
+
+/**
+ * 1. Delete from Beginning
+ * 
+ * point head to the next node i.e. second node
+ *  temp = head
+ *   head = head -> next
+ * 
+ * Make sure to free unused memory
+ * 
+ *   free(temp); or delete temp;
+ * 
+ *   ## Delete from End
+ * 
+ * Point head to the previous element i.e. last second element
+ * 
+ *      Change next pointer to null
+ *      struct node *end = head;
+ *      struct node *prev = NULL
+ *      while(end -> next)
+ *      {
+ *          prev = end;
+ *          end = end -> next;
+ *      }
+ *      prev ->next = NULL
+ * 
+ * Make sure to free unused memory
+ *     free(end); or delelte end;
+ * 
+ * 3) Delete from Middle:
+ * 
+ * 
+ *     Keeps track of pointer before node to delete node and pointer 
+ *      to node to delete
+ * 
+ *          temp = head;
+ *          prev = head;
+ *           for(int i=0; i < position; i++)
+ *           {
+ *               if(i==0 && position ==1)
+ *                 head = head -> next;
+ *                  free(temp) 
+ *           }else{
+ *                  if(i == position - 1 && temp){
+ *                        prev -> next = temp -> next;
+ *                         free(temp)
+ *                    } else{
+ *                        prev = temp;
+ *                         if(prev == NULL) // position was greater than 
+ *                               number of nodes in the list
+ *                               break;
+ *                             temp = temp ->next;       
+ *                    }
+ *           }
+ * 
+ */
+
+
+
+// class Node {
+
+//      constructor(number) {
+//           this.number = number; 
+//            this.next = null;
+//      }
+// }
+
+// function push (head, number){
+
+//      const node = new Node(number);
+//       node.next = head;
+//         head = node;
+//          return head;
+// }
+
+// function deleteN(head, position){
+//      let temp = head;
+//      let prev = head;
+
+//      for(let i=0; i< position; i++){
+//           if(i === 0 && position === 1){
+//                head = head.next;
+//                temp =null;
+//           }else{
+
+//                if(i === position - 1 && temp){
+//                     prev.next = temp.next;
+//                     temp = null;
+//                }else{
+//                     prev = temp;
+
+//                     //position was greater than number of nodes in the list
+//                     if(prev == null )
+//                     break;
+//                     temp = temp.next;
+//                }
+//           }
+//      }
+//      return head;
+// }
+
+// function printList(head){
+//      while(head){
+//           if(head.next === null){
+//                console.log(`[${head.number}][${head}]->(nil)`);
+//           }else{
+//                console.log(`[${head.number}][${head}] -> ${head.next}`)
+//                 head = head.next;
+//           }
+//      }
+//  console.log('\n');
+// }
+
+// //Driver code
+
+// let list = new Node(0);
+// list.next = null;
+// list = push(list, 1);
+// list = push(list, 2);
+// list = push(list, 3);
+
+// printList(list);
+
+// list = delete(list, 1);
+// printList(list);
+
+
+// class Node {
+//        constructor(data){
+//           this.data = data;
+//           this.next = null;
+//        }  
+// }
+
+// function deleteNode(head, val){
+//      if(!head){
+//           console.log("Element not present in the list");
+//           return -1;
+//      }
+
+//      if(head.data == val){
+
+//            if(head.next){
+//                head.data = head.next.data;
+//                head.next = head.next.next;
+//                return 1;
+
+//            }else{
+//                return 0;
+//            }
+//      }
+//      if(deleteNode(head.next, val) == 0){
+//            head.next = null;
+//            return 1;
+//      }
+// }
+
+// function push(head, data){
+//      let newNode = new Node(data);
+//      newNode.next = head;
+//      head = newNode;
+//      return head;
+// }
+
+// function printLL (head){
+//      if(!head) return;
+
+//      let temp = head;
+//      while(temp) {
+//           console.log(temp.data, " ");
+//           temp = temp.next;
+//      }
+//      console.log();
+// }
+
+// //Driver code
+
+// let head = null;
+
+// head = push(head, 10);
+// head = push(head, 12);
+// head = push(head, 14);
+// head = push(head, 15);
+
+// printLL(head);
+// deleteNode(head, 20);
+// printLL(head);
+// deleteNode(head, 10);
+// printLL(head);
+// deleteNode(head, 14);
+// printLL(head);
+
+/************************************ */
+
+
+//head of list
+
+// var head;
+
+// /** Linked list Node */
+
+// class Node{
+//      constructor(val){
+//           this.data =val;
+//           this.next =null;
+//      }
+// }
+
+// /** Insert a new Node at front of the list */
+
+// function push(new_data){
+//       var new_node = new Node(new_data);
+//       new_data.next = head;
+//       head = new_node;
+// }
+
+// function deleteNode(position)
+// {
+//      if(head == null){
+//           return;
+//      }
+
+//      var temp = head;
+//      if(position == 0){
+//           head =temp.next;
+//           return;
+//      }
+//      //Find previous node  of the node to be deleted
+//       for(i=0; temp !=null && i < position -1; i++)
+//       {
+//           temp =temp.next;
+//           if(temp == null || temp.next == null){
+//                return;
+//           }
+//           var next = temp.next.next;
+//           temp.next = next;
+//      }
+// }
+
+// function printList()
+// {
+//      var tnode = head;
+//      while(tnode !=null)
+//      {
+//          console.log(tnode.data + " ");
+//      }
+// }
+
+// push(7);
+// push(1);
+// push(3);
+// push(2);
+// push(8);
+// console.log("created linked list is");
+// printList();
+// //Delete node at position 4
+// deleteNode(4);
+// console.log("Linked List after ");
+// printList();
+
+/********************************************* */
+
+/** 
+ * Delete Linked List
+ */
+
+// var head;
+// class Node {
+//      constructor(val){
+//           this.data = val;
+//           this.next =  null;
+//      }
+// }
+
+// function deleteList() 
+// {
+//      head = null;
+// }
+
+// function push(new_data){
+//      var new_node = new Node(new_data);
+//      new_node.next = head;
+//      head = new_node;
+// }
+
+//         push(1);
+//         push(4);
+//         push(1);
+//         push(12);
+//         push(1);
+ 
+//         console.log("Deleting the list<br/>");
+//         deleteList();
+ 
+//         console.log("Linked list deleted");
+
+
+/** ##################################################### */
+
+   //Function to Get Nth Node in Linked List 
+
+//    class Node{
+//       constructor(d){
+//           this.data = d;
+//           this.next = null;
+//       }
+//    }
+
+//    var head;
+
+//    function GetNth(index)
+//    {
+//          var current = head;
+//          var count = 0;
+
+//          while(current != null){
+//           if(count == index)
+//           {
+//                return current.data;
+              
+//           }
+//            count++;
+//            current = current.next;
+       
+//          }
+//           assert(false);
+//           return 0;
+//    }
+
+//    function push(new_data)
+//    {
+//      var new_Node = new Node(new_data);
+//      new_Node.next = head;
+//      head = new_Node;
+//    }
+
+//    push(1);
+//     push(4);
+//      push(1);
+//       push(12);
+//        push(1);
+//         push(14);
+
+//         console.log("Element at index 3 is" + GetNth(3));
