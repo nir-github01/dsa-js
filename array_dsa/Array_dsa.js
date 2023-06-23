@@ -1854,5 +1854,122 @@
 
 /** ******************************************* */
 
-        
 
+/**Searching Algoritm
+ * 
+ * 1. Linear Search
+ */
+
+// function LinearSearch(arr, n, key)
+// {
+  
+//     for(let i=0; i< n; i++){
+//         if(arr[i] === key){
+//             let found = `Element found at index ${i}`;
+//             console.log(found)
+          
+//         }
+        
+//     }
+    
+   
+// }
+
+// //Driver Code 
+
+
+// let arr = [12, 34, 23, 56, 78, 90, 43, 45, 65];
+// let n = arr.length;
+// let key = 90;
+// LinearSearch(arr, n, key);
+
+
+// function sentinelSearch(arr, n, key){
+//     var last = arr[n-1];
+//     arr[n-1] = key;
+//     var i=0;
+//     while(arr[i] !=key){
+//         i++;
+//     }
+//     arr[n-1] = last;
+//     if((i< n -1) || (ar[n-1] == key)){
+//         console.log(key + "is Present at index" + i);
+//     }else{
+//         console.log("Element not found");
+//     }
+// }
+
+// //Driver code
+
+// var arr = [10, 20, 180, 30, 60, 50, 110, 100, 70];
+// var n = arr.length;
+// var key = 180;
+// sentinelSearch(arr, n, key);
+
+/** ########################################### */
+
+
+/**
+ *  Binary Search
+ * By sorting array using binary search 
+ * 
+ */
+
+// function BinarySearch(arr, n, l, r, key){
+//     arr.sort((a, b) => a-b);
+//     let mid = Math.floor(n)/2;
+//     while( r >= l){
+//         mid = l + Math.floor((r - l)/2);
+//         if(arr[mid] == key){
+//             return mid;
+//         }
+//         if(arr[mid] > key){
+//             r= mid - 1;
+//         }else{
+//             l= mid + 1
+//         }
+//     }
+//     return -1;
+// }
+// let arr = new Array(2, 3, 4, 10, 40);
+// let n= arr.length;
+// let r = n-1;
+// let l=0;
+// let key = 10;
+// let result = BinarySearch(arr, n, l, r, key);
+
+// if(result == -1){
+//     console.log("Element is not presemt at in array")
+// }else{
+//     console.log("Element is  present in array");
+// }
+    
+
+
+/** %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+
+
+/** 
+ * Recursive Method
+ */
+
+function binarySearch(arr, l, r, x) {
+    if(l >= r) {
+        let mid = l + Math.floor((r-1) / 2);
+
+        if(arr[mid] == x){
+            return mid;
+        }
+        if(arr[mid] > x){
+            return binarySearch(arr, l, mid - 1, x);
+        }
+
+        return (arr, mid + l, r, x)
+    }
+    return -1;
+}
+let arr = [2, 3, 4, 10, 40];
+let x= 10;
+let n= arr.length;
+let result = binarySearch(arr, 0, n - 1, x);
+(result == -1) ? console.log("Element is not present") : console.log("Element is present"); 

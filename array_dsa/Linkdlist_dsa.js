@@ -1202,3 +1202,92 @@
 //         push(14);
 
 //         console.log("Element at index 3 is" + GetNth(3));
+
+
+/**   Program for Nth node from the end of a Linked List */
+
+// class Node {
+//      constructor(d){
+//           this.data = d;
+//           this.next = null;
+//      }
+// }
+
+// class LinkedList
+// {
+//      constructor(d) 
+//      {
+//           this.head = d;
+//      }
+// }
+
+// printNthFromLast(n) 
+// {
+//      let len = 0;
+//      let temp = this.head;
+
+//      while(temp != null) 
+//      {
+//           temp = temp.next;
+//           len++;
+//      }
+//       //Check if value of n is not more than length of the linked list
+
+//           if(len < n) 
+//           {
+//                return;
+//           }
+//           temp = this.head;
+
+//           //get the (len - n+ 1)th node from the beginning
+//           for(let i= 1; i< len - n + 1; i++)
+//           {
+//                temp = temp.next;
+//           }
+//           console.log(temp.data);
+// }
+
+
+
+/** ################################################ */
+
+
+/** Check Linked List is circular or not */
+
+class Node{
+     constructor(val){
+          this.data = val ;
+          this.next = null;
+     }
+}
+function isCricular(head)
+{
+     if(head == null)
+     return true;
+
+     //Next of head
+     node = head.next;
+
+     while(node !=null && node != head){
+          node = node.next;
+     }
+     return (node == head);
+}
+
+function newNode(data){
+temp = new Node();
+temp.data = data;
+temp.next = null;
+return temp;
+}
+
+//Driver code
+
+head = newNode(1);
+head.next = newNode(2);
+head.next.next = newNode(3);
+head.next.next.next = newNode(4);
+
+console.log(isCricular(head) ? "Yes" : "No");
+head.next.next.next.next = head;
+console.log(isCricular(head) ? "Yes" : "No");
