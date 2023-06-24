@@ -1953,23 +1953,159 @@
  * Recursive Method
  */
 
-function binarySearch(arr, l, r, x) {
-    if(l >= r) {
-        let mid = l + Math.floor((r-1) / 2);
+// function binarySearch(arr, l, r, x) {
+//     if(l >= r) {
+//         let mid = l + Math.floor((r-1) / 2);
 
-        if(arr[mid] == x){
-            return mid;
+//         if(arr[mid] == x){
+//             return mid;
+//         }
+//         if(arr[mid] > x){
+//             return binarySearch(arr, l, mid - 1, x);
+//         }
+
+//         return (arr, mid + l, r, x)
+//     }
+//     return -1;
+// }
+// let arr = [2, 3, 4, 10, 40];
+// let x= 10;
+// let n= arr.length;
+// let result = binarySearch(arr, 0, n - 1, x);
+// (result == -1) ? console.log("Element is not present") : console.log("Element is present"); 
+
+
+/** ############################################################## */
+
+/** 
+ * Meta Binary search
+ * 
+ * function meta_binary_search(A, target):
+ * n = length(A)
+ * interval_size = n;
+ * whie (interval_size > 0):
+ * index = min(n-1, interval_size /2)
+ * mid = A[index]
+ * if(mid == target)
+ * return index
+ * elif mid < target:
+ * interval_size = (n-index) /2
+ * else
+ * interval_size = index/2
+ * 
+ * return -1
+ */
+
+
+// function bsearch(A, key_to_search)
+// {
+//     let n = A.length;
+//     //Set number of bits to represent largest array index
+//     let lg = parseInt(Math.log(n-1)/Math.log(2)) + 1
+
+//     //while((1 << lg) < n - 1)
+//     //lg += 1;
+//     let pos = 0;
+//     for(let i=lg; i>= 0; i--){
+//         if(A[pos] == key_to_search)
+//         return pos;
+
+//         //Increamently construct the index of the target value
+
+//         let new_pos = pos | (1<< i);
+
+//         if((new_pos < n) && (A[new_pos]  <= key_to_search))
+//         pos = new_pos;
+//     }
+//     return ((A[pos] == key_to_search) ? pos : -1);
+// }
+
+// //Driver code 
+
+// let A = [-2, 10, 100, 250, 32315];
+// console.log(A, 10);
+
+/** %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+
+// function ternarySearch(l, r, key, arr){
+//     if( r >= l){
+//         // find the mid1 and mid2
+//         let mid1= l + parseInt((r - l) / 3, 10);
+//         let mid2 = r - parseInt((r - l) / 3, 10);
+
+//         // Check if key is present at any mid
+
+//         if(arr[mid1] == key){
+//             return mid1;
+//         }
+//         if(arr[mid2] == key )
+//         {
+//             return mid2;
+//         }
+
+//         if(key < arr[mid1]) {
+//             return ternarySearch(l, mid1 - 1, key, arr);
+//         }else if(key > arr[mid2]){
+//              return ternarySearch(mid2 + 1, r, key, arr);
+//         }else{
+//             return ternarySearch(mid1 + 1, mid2 - 1, key, arr);
+//         }
+//     }
+//     //key not found
+//     return -1;
+// }
+
+// let l, r, p, n, key;
+
+// let arr = [1, 2, 3, 4, 5, 6, 7, 8,9, 10];
+// n= arr.length;
+// l=0;
+// r=n-1;
+// key = 7;
+
+// p = ternarySearch(l, r, key, arr);
+
+// console.log("Index of" + key + "is" + p );
+
+// key = 50;
+
+// p = ternarySearch(l, r, key, arr);
+
+// console.log("Index of" + key + "is " + p);
+
+
+/** $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ */
+
+/** Approach - 2 */
+
+function ternarySearch(l, r, key, arr) 
+{
+    while( r >=l) 
+    {
+        let mid1= l + parseInt((r - l) / 3, 10);
+        let mid2 = r - parseInt((r - l) / 3, 10);
+
+        if(arr[mid1] == key) {
+            return mid1;
         }
-        if(arr[mid] > x){
-            return binarySearch(arr, l, mid - 1, x);
+        if(arr[mid2] == key){
+            return mid2;
         }
 
-        return (arr, mid + l, r, x)
+        if(key < arr[mid1]){
+            r = mid1 - 1;
+        }else if(key > arr[mid2]){
+            l = mid2 + 1;
+        }else{
+            l= mid1 + 1;
+            r = mid2 - 1;
+        }
     }
     return -1;
 }
-let arr = [2, 3, 4, 10, 40];
-let x= 10;
-let n= arr.length;
-let result = binarySearch(arr, 0, n - 1, x);
-(result == -1) ? console.log("Element is not present") : console.log("Element is present"); 
+
+let l, r, p, key;
+let arr= [1, 2, 3, 4, 5, 6, 7, 8, 9]
+l=0; r=arr.length - 1; key = 5;
+p= ternarySearch(l, r, key, arr);
+console.log("Index of " +" " + key + " " + "is" +" " + p);
