@@ -2078,34 +2078,38 @@
 
 /** Approach - 2 */
 
-function ternarySearch(l, r, key, arr) 
-{
-    while( r >=l) 
-    {
-        let mid1= l + parseInt((r - l) / 3, 10);
-        let mid2 = r - parseInt((r - l) / 3, 10);
+// function ternarySearch(l, r, key, arr) 
+// {
+//     while( r >=l) 
+//     {
+//         let mid1= l + parseInt((r - l) / 3, 10);
+//         let mid2 = r - parseInt((r - l) / 3, 10);
 
-        if(arr[mid1] == key) {
-            return mid1;
-        }
-        if(arr[mid2] == key){
-            return mid2;
-        }
+//         if(arr[mid1] == key) {
+//             return mid1;
+//         }
+//         if(arr[mid2] == key){
+//             return mid2;
+//         }
 
-        if(key < arr[mid1]){
-            r = mid1 - 1;
-        }else if(key > arr[mid2]){
-            l = mid2 + 1;
-        }else{
-            l= mid1 + 1;
-            r = mid2 - 1;
-        }
-    }
-    return -1;
-}
+//         if(key < arr[mid1]){
+//             r = mid1 - 1;
+//         }else if(key > arr[mid2]){
+//             l = mid2 + 1;
+//         }else{
+//             l= mid1 + 1;
+//             r = mid2 - 1;
+//         }
+//     }
+//     return -1;
+// }
 
-let l, r, p, key;
-let arr= [1, 2, 3, 4, 5, 6, 7, 8, 9]
-l=0; r=arr.length - 1; key = 5;
-p= ternarySearch(l, r, key, arr);
-console.log("Index of " +" " + key + " " + "is" +" " + p);
+// let l, r, p, key;
+// let arr= [1, 2, 3, 4, 5, 6, 7, 8, 9]
+// l=0; r=arr.length - 1; key = 5;
+// p= ternarySearch(l, r, key, arr);
+// console.log("Index of " +" " + key + " " + "is" +" " + p);
+
+
+/** %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+
