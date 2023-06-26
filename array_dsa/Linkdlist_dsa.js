@@ -1254,40 +1254,201 @@
 
 /** Check Linked List is circular or not */
 
-class Node{
-     constructor(val){
-          this.data = val ;
-          this.next = null;
-     }
-}
-function isCricular(head)
-{
-     if(head == null)
-     return true;
+// class Node{
+//      constructor(val){
+//           this.data = val ;
+//           this.next = null;
+//      }
+// }
+// function isCricular(head)
+// {
+//      if(head == null)
+//      return true;
 
-     //Next of head
-     node = head.next;
+//      //Next of head
+//      node = head.next;
 
-     while(node !=null && node != head){
-          node = node.next;
-     }
-     return (node == head);
-}
+//      while(node !=null && node != head){
+//           node = node.next;
+//      }
+//      return (node == head);
+// }
 
-function newNode(data){
-temp = new Node();
-temp.data = data;
-temp.next = null;
-return temp;
-}
+// function newNode(data){
+// temp = new Node();
+// temp.data = data;
+// temp.next = null;
+// return temp;
+// }
 
-//Driver code
+// //Driver code
 
-head = newNode(1);
-head.next = newNode(2);
-head.next.next = newNode(3);
-head.next.next.next = newNode(4);
+// head = newNode(1);
+// head.next = newNode(2);
+// head.next.next = newNode(3);
+// head.next.next.next = newNode(4);
 
-console.log(isCricular(head) ? "Yes" : "No");
-head.next.next.next.next = head;
-console.log(isCricular(head) ? "Yes" : "No");
+// console.log(isCricular(head) ? "Yes" : "No");
+// head.next.next.next.next = head;
+// console.log(isCricular(head) ? "Yes" : "No");
+
+/** %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+
+// class Node{
+//      constructor(){
+//           this.data = 0;
+//           this.next =null;
+//      }
+// }
+
+// function push(head_ref, data){
+//      var ptr1 = new Node();
+//      var temp = head_ref;
+//      ptr1.data = data;
+//      ptr1.next = head_ref;
+
+//      /**
+//       * If linked list is not null then set the next of last node
+//       */
+//      if(head_ref !=null){
+//           while(temp.next != head_ref){
+//                temp = temo.next;
+//           }
+//           temp.next = ptr1;
+//      }else{
+//           ptr1.next =ptr1 ;
+//           head_ref = ptr1;
+//           return head_ref;
+//      }
+// }
+
+// function countNodes(head){
+//      var temp =head;
+//           var result = 0;
+//            if(head != null){
+//                do{
+//                     temp =temp.next;
+//                     result++;
+//                }while(temp != head)
+//            }
+//            return result;
+// }
+
+// var head = null;
+// head = push(head, 12);
+// head = push(head, 56);
+// head = push(head, 2);
+// head = push(head, 11);
+
+// console.log(countNodes(head));
+
+
+/** %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+
+
+/** 
+ * Convert singly linked list into circular linked list
+ * 
+ * //Algorithms
+ * 
+ * 1. Initialize a pointer current to the head node of the singly linked list
+ * 2. Traverse the linked list by moving the current pointer to the next untill it 
+ *    reaches the last node(i.e. the node whose next pointer is null)
+ * 3. Set the next pointer of the last node to point back to thge head node of 
+ *    the linked list.
+ * 4. The singly linked list is now a circular linked list
+ */
+
+// class Node {
+//    constructor(val) {
+//       this.data = val;
+//       this.next = null;
+//    }
+// }
+
+// function circular (head) {
+//     start = head;
+
+//    while(head.next != null){
+//       head = head.next;
+//       head.next = start;
+//       return start;
+//    }
+// }
+
+// function push(head, data) 
+// {
+//    newNode = new Node();
+
+//    newNode.data = data;
+//    newNode.next = (head);
+
+//    (head) = newNode;
+//    return head;
+// }
+
+// function displayList(node) 
+// {
+//    start = node;
+//    while(node.next != start){
+//       console.log(" " + node.data)
+//       node = node.next;
+//    }
+
+//    console.log(" " + node.data);
+// }
+
+
+// //Driver Code 
+// head = null ;
+// head = push(head, 15);
+// head = push(head, 14);
+// head = push(head, 13);
+// head = push(head, 22);
+// head = push(head, 17);
+
+// circular(head);
+
+// console.log("Display List");
+
+// displayList(head);
+
+
+/**   (((((((((((((((((((((((()))))))))))))))))))))))) */
+
+
+// class Node{
+//    constructor(value) {
+//       this.data = value;
+//       this.next = null;
+//    }
+// }
+
+// function convertToCircular(head){
+//    let current = head;
+//    while(current.next !== null){
+//       current = current.next;
+//    }
+//    current.next = head;
+// }
+// function printList(head)
+// {
+//    let current = head;
+//    do {
+//       console.log(current.data + " ");
+//       current = current.next;
+
+//    }while(current !== head);
+// }
+
+// let head = new Node(1);
+// head.next = new Node(2);
+// head.next.next = new Node(3);
+// head.next.next.next = new Node(4);
+
+// convertToCircular(head);
+// console.log("To the circular linked list is : ");
+// printList(head);
+
+
+
