@@ -1,84 +1,110 @@
-class Node {
-    constructor (value) 
-    {
-        this.data = 0;
-        this.next = null;
+// var t = -1;
+// var MAX = 1000;
+// var a = Array(MAX).fill(0);
 
-    }
-}
+// function  isEmpty() {
+//     return (t < 0);
+// }
 
-class StackUsingLinkedList{
-    constructor(){
-        this.top = null;
-    }
+// function push(x){
+//     if(t >= (MAX - 1)){
+//         console.log("Stacki Overflow");
+//         return false;
+//     }else{
+//         t += 1;
+//         a[t] = x;
+//         console.log(x + "Pushed into stack ");
+//         return true
+//     }
+// }
 
-    push(x){
-        let temp = new Node();
-        if(temp == null ){
-            console.log("Heap Over Flow");
-            return;
+// function pop() {
+//     if(t < 0) {
+//         return 0;
+//     }else{
+//         var x = a[t];
+//         t -=1;
+//         return x;
+//     }
+// }
 
-        }
+// function peek() {
+//     if(t < 0) {
+//         console.log("Stack Underflow");
+//         return 0;
+//     }else{
+//         var x = a[t];
+//         return x;
+//     }
+// }
 
-        temp.data = x;;
-        temp.link = this.top;
-        this.top = temp;
-    }
+// function print() {
+//     for(let i=0; i> -1; i--){
+//         console.log(" " + a[i]);
+//     }
+// }
 
-    isEmpty(){
-        return this.top == null;
-    }
-    peek()
-    {
-        if(!this.isEmpty()){
-            return this.top.data;
-        }else{
-            console.log("Stack is empty");
-            return -1;
-        }
-    }
+// push(10);
+// push(20);
+// push(30);
+// console.log(pop() + "Poped from stack");
+// console.log("Top element is" + peek());
+// console.log("Element present in stack ");
+// print();
 
-    pop(){
-        if(this.top == null ) {
-            console.log("stack is underFlow");
-            return;
-        }
-        this.top = this.top.link;
-    }
-    display(){
-        if(this.top == null ) {
-            console.log("Stack is under Flow");
-        }else{
-            let temp = this.top;
-            while(temp != null) {
-                console.log(temp.data + " ->");
-                temp = temp.link; 
-            }
-        }
-    }
-}
+/**  Another approach */
 
+// var root; 
+//  class StackNode {
+//     constructor(data) {
+//         this.data = data;
+//         this.next = null;
 
-let obj = new StackUsingLinkedList();
+//     }
+//  }
 
-obj.push(11);
-obj.push(22);
-obj.push(33);
-obj.push(44);
+//  function isEmpty(){
+//     if(root == null){
+//         return true;
+//     }else{
+//         return false
+//     }
+//  }
+//  function push(data) {
+//     var newNode = new StackNode(data) ;
+//     if(root == null ){
+//         root = newNode;
+//     }else{
+//         var temp = root;
+//         root = newNode;
+//         newNode.next = temp;
+//     }
+//     console.log(data + "pushed to stack node");
+//  }
 
-//Print stacjk element
+//  function pop() {
+//     var popped = Number.MIN_VALUE;
+//     if(root == null) {
+//             console.log("Stack is empty");
+//     }else{
+//         popped = root.data;
+//         root = root.next;
+//     }
+//     return popped;
 
-obj.display();
+// }
 
-//print Top element of stack 
-console.log("Top element is ", obj.peek() + " ");
+// function peek() {
+//     if(root ==null) {
+//         console.log("Stack is empty");
+//         return Number.MIN_VALUE;
+//     }else{
+//         return root.data;
+//     }
+// }
 
-//Delete top element of stack 
-obj.pop();
-obj.pop();
-
-//print stack elements
-
-obj.display();
-
-console.log("Top element is ", obj.peek() );
+// push(10);
+// push(20);
+// push(30);
+// console.log(pop() + "Popped from stack ");
+// console.log("Top element is " + peek());
