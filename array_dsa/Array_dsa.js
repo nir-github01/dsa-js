@@ -2113,3 +2113,64 @@
 
 /** %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
 
+/**  
+ * Smallest subarray with sum greater than given value
+ */
+
+// function smallestSubArray(arr, n, x) {
+
+//     let min_len = n + 1;
+//     for(let i=0; i < n; i++) {
+//         let cur_sum = arr[i];
+//         if(cur_sum > x){
+//             return 1;
+//         }
+//         for(let j = i+ 1; j< n; j++)
+//         {
+//             let min_len = j - i + 1;
+//             cur_sum += arr[j];
+//             if(cur_sum > x && (j - i + 1) < min_len){
+//                 min_len = j - i + 1
+//             }
+
+//         }
+//     }
+//     return min_len;
+// }
+
+// let arr =[1, 4, 45, 6, 10, 19];
+// let x = 51;
+// let n = arr.length;
+// let res = smallestSubArray(arr, n, x);
+// (res == n + 1) ? console.log("Not possible") : console.log(res);
+
+
+/** %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+
+//Approach - 2
+
+// function smallestSubArrayWithSum(arr, n, x){
+//     let curr_sum = 0, min_len = n + 1;
+
+//     //Initializing starting and ending indexes
+//     let start = 0, end = 0;
+//     while(end < n) {
+//         while(curr_sum <= x && end < n)
+//         {
+//             curr_sum += arr[end ++];
+//         }
+//         while(curr_sum > x && start < n) {
+//             if(end - start < min_len){
+//                 min_len = end - start;
+//             }
+//             curr_sum -= arr[start++];
+//         }
+//     }
+//     return min_len;
+// }
+
+// let arr = [1, 4, 45, 6, 10, 19];
+// let x= 51; 
+// let n = arr.length;
+// let res = smallestSubArrayWithSum(arr, n, x);
+// (res == n + 1) ? console.log("Not possible"): console.log("Minimum sub array"+ " "+res);
