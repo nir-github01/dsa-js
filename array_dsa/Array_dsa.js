@@ -2174,3 +2174,140 @@
 // let n = arr.length;
 // let res = smallestSubArrayWithSum(arr, n, x);
 // (res == n + 1) ? console.log("Not possible"): console.log("Minimum sub array"+ " "+res);
+
+/** %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+
+/** Inversion sort  */
+
+// function inversionSortArray(arr, n) {
+//     let inv_count = 0;
+//     for(let i= 0; i< n; i++) {
+//         for(let j= i+ 1; j < n; j++){
+//             if(arr[i] > arr[j]){
+//                  inv_count++;
+//             }
+//         }
+//     }
+//     console.log("Inversion count "+" "+inv_count);
+// }
+
+// let arr= [1, 20, 6, 5, 4];
+// let n = arr.length;
+// inversionSortArray(arr, n);
+
+/** $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ */
+
+//Approach - 2
+
+// function mergerAndCount(arr, l, m, r) {
+//     let left = [];
+//     for(let i=1; i < m + 1; i++){
+//         left.push(arr[i]);
+//     }
+//     //Right subarray
+//     let right = [];
+//     for(let i = m + 1; i < r + 1; i++){
+//         right.push(arr[i]);
+//     }
+//     let i = 0, j=0, k = l, swaps = 0;
+//     while(i < left.length && j < right.length){
+//         if(left[i] <= right[j]){
+//             arr[k++] = left[i++]
+//         }else{
+//             arr[k++] = right[j++];
+//             swaps += (m + 1) - (l + i);
+//         }
+//     }
+
+//     while(i < left.length)
+//     {
+//         arr[k++] = left[i++];
+//     }
+//     while(j < right.length)
+//     {
+//         arr[k++] = right[j++];
+//     }
+//     return swaps;
+// }
+
+// //Merge sort function 
+
+// function mergeSortAndCount(arr, l, r){
+//     let count =0;
+//     if(l < r) {
+//         let m = Math.floor((l + r) /2);
+//         count += mergeSortAndCount(arr, l, m)
+
+//         count += mergeSortAndCount(arr, m+1, r)
+//          count += mergerAndCount(arr, l, m, r);
+//     }
+//     console.log( count) ;
+// }
+
+// let arr = [ 1, 20, 6, 4, 5];
+// let l= 0;
+// let r= arr.length - 1;
+// mergeSortAndCount(arr, l, r)
+
+/** %%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+
+/** 
+ * Approacj=h -3 
+ * Heap sort
+ */
+
+const GetNumOfInversions = (A) => {
+    const N = A.length; 
+    if(N <= 1){
+        return 0;
+    }
+
+    const sortList = [];
+    let result = 0;
+
+    //Heap Sort 
+
+    for(let i = 0; i < N; i++) {
+        sortList.push(A[i], i);
+    }
+
+    const x = [];
+    while(sortList.length) {
+        sortList.sort((a, b) => a[0] - b[0]);
+    }
+
+    const v = sortList[0];
+    sortList.shift();
+    const y = x.length - x.slice(0, x.length).indexOf(v[1] - 1);
+    let z = 0;
+    if(x.length) {
+        z =BinarySearch (x, 0, x.length - 1, v[1]);
+        if(z < 0) {
+            z = -(z+1);
+        }
+    }
+
+    result += v[1] - z;
+    x.push(v[1]);
+    x.sort();
+
+    return result;
+}
+
+const BinarySearch = (list, start, end, key) => {
+    while(start <= end){
+        const mid = start + Math.floor((end - start) / 2)
+         if(list[mid] === key){
+            return mid;
+         }else if(list[mid] > key) {
+            end = mid - 1;
+         }else{
+            start = mid + 1;
+         }
+    }
+    return -(start + 1)
+}
+
+const A = [1, 20, 6, 4, 5];
+const result = GetNumOfInversions(A);
+console.log(`Number of iinversions are ${result}`);
