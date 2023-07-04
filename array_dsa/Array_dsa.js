@@ -2256,58 +2256,157 @@
  * Heap sort
  */
 
-const GetNumOfInversions = (A) => {
-    const N = A.length; 
-    if(N <= 1){
-        return 0;
-    }
+// const GetNumOfInversions = (A) => {
+//     const N = A.length; 
+//     if(N <= 1){
+//         return 0;
+//     }
 
-    const sortList = [];
-    let result = 0;
+//     const sortList = [];
+//     let result = 0;
 
-    //Heap Sort 
+//     //Heap Sort 
 
-    for(let i = 0; i < N; i++) {
-        sortList.push(A[i], i);
-    }
+//     for(let i = 0; i < N; i++) {
+//         sortList.push(A[i], i);
+//     }
 
-    const x = [];
-    while(sortList.length) {
-        sortList.sort((a, b) => a[0] - b[0]);
-    }
+//     const x = [];
+//     while(sortList.length) {
+//         sortList.sort((a, b) => a[0] - b[0]);
+//     }
 
-    const v = sortList[0];
-    sortList.shift();
-    const y = x.length - x.slice(0, x.length).indexOf(v[1] - 1);
-    let z = 0;
-    if(x.length) {
-        z =BinarySearch (x, 0, x.length - 1, v[1]);
-        if(z < 0) {
-            z = -(z+1);
-        }
-    }
+//     const v = sortList[0];
+//     sortList.shift();
+//     const y = x.length - x.slice(0, x.length).indexOf(v[1] - 1);
+//     let z = 0;
+//     if(x.length) {
+//         z =BinarySearch (x, 0, x.length - 1, v[1]);
+//         if(z < 0) {
+//             z = -(z+1);
+//         }
+//     }
 
-    result += v[1] - z;
-    x.push(v[1]);
-    x.sort();
+//     result += v[1] - z;
+//     x.push(v[1]);
+//     x.sort();
 
-    return result;
-}
+//     return result;
+// }
 
-const BinarySearch = (list, start, end, key) => {
-    while(start <= end){
-        const mid = start + Math.floor((end - start) / 2)
-         if(list[mid] === key){
-            return mid;
-         }else if(list[mid] > key) {
-            end = mid - 1;
-         }else{
-            start = mid + 1;
-         }
-    }
-    return -(start + 1)
-}
+// const BinarySearch = (list, start, end, key) => {
+//     while(start <= end){
+//         const mid = start + Math.floor((end - start) / 2)
+//          if(list[mid] === key){
+//             return mid;
+//          }else if(list[mid] > key) {
+//             end = mid - 1;
+//          }else{
+//             start = mid + 1;
+//          }
+//     }
+//     return -(start + 1)
+// }
 
-const A = [1, 20, 6, 4, 5];
-const result = GetNumOfInversions(A);
-console.log(`Number of iinversions are ${result}`);
+// const A = [1, 20, 6, 4, 5];
+// const result = GetNumOfInversions(A);
+// console.log(`Number of iinversions are ${result}`);
+
+/** %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+
+/**
+ * Sor5t an array of 0s, 1s, and 2s using the pointer approach
+ * 
+ * 
+ */
+
+
+// function sort(a, arr, n){
+//     let lo = 0;
+//     let hi = n - 1;
+//     let mid = 0;
+//     let temp = 0;
+
+//     while(mid <= hi){
+//         if(a[mid] == 0)
+//         {
+//             temp = a[lo];
+//             a[lo] = a[mid];
+//             a[mid] = temp;
+//             lo++;
+//             mid++;
+//         }else if(a[mid] == 1){
+//                mid++;
+//         }else{
+//             temp = a[mid];
+//             a[mid] = a[hi];
+//             a[hi] = temp;
+//             h--;
+//         }
+//     }
+
+  
+// }
+
+// //Utility function to print an array
+
+// function printarray(arr, n){
+//     let i;
+//     for(i=0; i< n; i++){
+//         console.log(arr[i])
+//     }
+// }
+
+let arr = [0,1, 1, 0, 1, 2, 1, 2, 0, 0, 0, 1];
+let n= arr.length;
+sort(arr, n);
+printarray(arr,n);
+
+/** approach -2  */
+
+// function printArray(arr, n) 
+// {
+//     for(let i=0; i<n; i++){
+//         console.log(arr[i] + " ");
+//     }
+// }
+
+// function sortarr(arr, n) {
+//     let i, cnt0= 0, cnt1=0, cnt2=0;
+
+//     //Count the number of 0s, 1s, and 2s in the array
+
+//     for(i=0;i<n; i++){
+//         switch(arr[i]){
+//             case 0:
+//                 cnt0++;
+//                 break;
+//             case 1:
+//                 cnt1++;
+//                 break;
+//             case 2:
+//                 cnt2++
+//                 break;        
+//         }
+//     }
+
+//     i=0;
+//     while(cnt0 > 0){
+//         arr[i++] =0;
+//         cnt0--;
+//     }
+
+//     while(cnt1 > 0){
+//         arr[i++] = 1;
+//         cnt1--;
+//     }
+//     while(cnt2 > 0){
+//         arr[i++] = 2;
+//         cnt2--;
+//     }
+//     printArray(arr, n);
+// }
+
+// let arr = [0, 1,  1, 0,1, 2, 1, 2, 0, 0, 0, 1];
+// let n = arr.length;
+// sortarr(arr, n);
