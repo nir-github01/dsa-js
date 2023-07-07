@@ -104,7 +104,162 @@
 // }
 
 // push(10);
-// push(20);
+// push(20);    
 // push(30);
 // console.log(pop() + "Popped from stack ");
 // console.log("Top element is " + peek());
+
+/*********** ((((((((((((((((((((())))))))))))))))))))) */
+
+/**@abstract
+ *  Implements two stacks in an array
+ * 
+ * $$ following functions must be supported by two Stacks
+ *  1. push1(int x)-> pushes x to first stack
+ *  2. push2(int x) -> pushes x to second stack
+ *  3. pop1() -> pops an element from first stack and return the popped element
+ */
+
+// class twoStacks {
+//     //constructor 
+//     constructor(n) {
+//         this.arr = new Array(n);
+//         this.size = n;
+//         this.top1 = Math.floor(n/2) + 1;
+//         this.top2 = Math.floor(n/2);
+//     }
+//     //Method to push an element x to stack1
+//     push1(x)
+//     {
+//         if(this.top1 > 0){
+//             this.top1 --;
+//             this.arr[this.top1] = x;
+//         }else{
+//             console.log("stack overflow" + "By element:"+" " + x );
+//             return ;
+//         }
+//     }
+
+//     push2(x){
+//         if(this.top2 < this.size - 1)
+//         {
+//             this.top2++;
+//             this.arr[this.top2] = x;
+//         }else{
+//             console.log("Stack is over flow " + "By element" + ":"+" "+ x);
+//             return ;
+//         }
+//     }
+
+//     pop1()
+//     {
+//         if(this.top1 <= this.size /2){
+//             let x = this.arr[this.top1];
+//             this.top1++;
+//             return x;
+//         }else{
+//             console.log("Stack is under flow");
+//         }
+//         return 0;
+//     }
+
+//     pop2()
+//     {
+//         if(this.top2 >= Math.floor(this.size /2) + 1){
+//             let x = this.arr[this.top2];
+//             this.top2--;
+//             return x;
+//         }else{
+//             console.log("Stack Under flow");
+//         }
+//         return 1;
+//     }
+// }
+
+// let ts = new twoStacks(5);
+
+// ts.push1(5);
+// ts.push2(10);
+// ts.push2(15);
+// ts.push1(11);
+// ts.push2(7);
+// console.log("Popped element from stack1 is "
+//                  + " : " +  ts.pop1() +"<br>");
+// ts.push2(40);
+// console.log("Popped element from stack2 is "
+//                  + ": " +  ts.pop2()
+//                  +"<br>");
+
+
+/** 
+ * Approach - 2
+ */
+
+// class TwoStacks {
+//     //constructor 
+//     constructor(n){
+//         this.arr = Array(n).fill(0);
+//         this.size = n;
+//         this.top1 = -1 ;
+//         this.top2 = this.size;
+//     }
+
+//     push1(x) {
+//         if(this.top1 < this.top2 - 1){
+//             this.top1++;
+//             this.arr[this.top1] = x;
+//         }else{
+//             console.log("Stack OverFlow");
+//             System.exit(1);
+//         }
+//     }
+
+//     push2(x) {
+//         if(this.top1 < this.top2 - 1)
+//         {
+//             this.top2--;
+//             this.arr[this.top2] = x;
+//         }else{
+//             console.log("Stack Overflow");
+//             System.exit(1);
+//         }
+//     }
+
+//     pop1()
+//     {
+//         if(this.top1 >= 0){
+//             var x = this.arr[this.top1];
+//             this.top1--;
+//             return x;
+//         }else{
+//             console.log("Stack UnderFlow");
+//             System.exit(1);
+//         }
+//         return 0;
+//     }
+
+//     pop2() {
+//         if(this.top2 < this.size){
+//             var x = this.arr[this.top2];
+//             this.top2++;
+//             return x;
+//         }else{
+//             console.log("Stack underFlow");
+//             System.exit(1)
+//         }
+//         return 0;
+//     }
+// }
+
+
+// var ts = new TwoStacks(5);
+// ts.push1(5);
+// ts.push2(10);
+// ts.push2(15);
+// ts.push1(11);
+// ts.push2(7);
+// console.log("Popped element from" + " stack1 is " + ts.pop1());
+// ts.push2(40);
+// console.log("\n Popped element from" + " stack2 is " + ts.pop2());
+
+

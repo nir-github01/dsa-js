@@ -1482,55 +1482,57 @@
 // var middle = Math.floor(v.length/2);
 // console.log(v[middle]);
 
-var head; 
-class Node{
-   constructor (val) {
-      this.data = val ;
-      this.next = null;
+// var head; 
+// class Node{
+//    constructor (val) {
+//       this.data = val ;
+//       this.next = null;
 
-   }
-}
+//    }
+// }
 
-function pushNode(new_data) {
-   var new_node = new Node(new_data);
-   new_node.next = head;
-   head = new_node;
-}
+// function pushNode(new_data) {
+//    var new_node = new Node(new_data);
+//    new_node.next = head;
+//    head = new_node;
+// }
 
-function printNode() {
-   var tnode = head;
-   while(tnode != null) {
-      console.log(tnode.data + "->");
-      tnode = tnode.next;
-   }
-   console.log("NULL");
-}
+// function printNode() {
+//    var tnode = head;
+//    while(tnode != null) {
+//       console.log(tnode.data + "->");
+//       tnode = tnode.next;
+//    }
+//    console.log("NULL");
+// }
 
-function getLen(){
-   let length = 0; 
-   var temp = head;
-   while(temp != null){
-      length += 1;
-      temp0 = temp.next;
-   }
-   return length;
-}
+// function getLen(){
+//    let length = 0; 
+//    var temp = head;
+//    while(temp != null){
+//       length += 1;
+//       temp0 = temp.next;
+//    }
+//    return length;
+// }
 
-function printMiddle (){
-   if(head != null){
-      let length = getLen();
-      var temp = head;
-      let middleLength = length/2;
+// function printMiddle (){
+//    if(head != null){
+//       let length = getLen();
+//       var temp = head;
+//       let middleLength = length/2;
 
-      while(parseInt(middleLength) != 0){
-         temp =temp.next;
-         middleLength --;
-      }
-      console.log(temp.data);
-   }
-   for(let i=5; i>=1; i--){
-      pushNode(i);
-      pushNode();
-      printMiddle();
-   }
-}
+//       while(parseInt(middleLength) != 0){
+//          temp =temp.next;
+//          middleLength --;
+//       }
+//       console.log(temp.data);
+//    }
+//    for(let i=5; i>=1; i--){
+//       pushNode(i);
+//       pushNode();
+//       printMiddle();
+//    }
+// }
+
+

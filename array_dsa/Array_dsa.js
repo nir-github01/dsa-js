@@ -2357,10 +2357,10 @@
 //     }
 // }
 
-let arr = [0,1, 1, 0, 1, 2, 1, 2, 0, 0, 0, 1];
-let n= arr.length;
-sort(arr, n);
-printarray(arr,n);
+// let arr = [0,1, 1, 0, 1, 2, 1, 2, 0, 0, 0, 1];
+// let n= arr.length;
+// sort(arr, n);
+// printarray(arr,n);
 
 /** approach -2  */
 
