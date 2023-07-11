@@ -132,27 +132,27 @@
 
 /***(((((((((((((((((((((()))))))))))))))))))))) */
 
-function sortArray(arr, n){
+// function sortArray(arr, n){
 
 
-    debugger
- arr=[  98, 78, 89, 0, 9];
-n = arr.length;
+//     debugger
+//  arr=[  98, 78, 89, 0, 9];
+// n = arr.length;
 
-    if(n !=undefined && n >1){
-        n = arr.length;
-    }else{
-        return "Invalid array";
-    }
-  debugger;
-    for(let i=0; i< n; i++){
-        for(let j=i+1; j< n; j++){
-            if(arr[i] > arr[j]){
-                let temp = arr[i];
-                   arr[i] = arr[j];
-                   arr[j] =temp;
-            }
-        }
-    }
-    console.log("Sorted Array", arr);
-}
+//     if(n !=undefined && n >1){
+//         n = arr.length;
+//     }else{
+//         return "Invalid array";
+//     }
+//   debugger;
+//     for(let i=0; i< n; i++){
+//         for(let j=i+1; j< n; j++){
+//             if(arr[i] > arr[j]){
+//                 let temp = arr[i];
+//                    arr[i] = arr[j];
+//                    arr[j] =temp;
+//             }
+//         }
+//     }
+//     console.log("Sorted Array", arr);
+// }
