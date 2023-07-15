@@ -156,3 +156,131 @@
 //     }
 //     console.log("Sorted Array", arr);
 // }
+
+/** (((((((((((((((((((((((((((((((((()))))))))))))))))))))))))))))))))) */
+
+
+/** 
+ * Majority Elements
+ * 
+ *
+ */
+
+// function MajorityEle(arr, n) 
+// {
+//   debugger;
+//      arr = [3, 4, 5, 3, 4, 3, 4, 5, 4, 5, 4, 5,6 ,4, 4, 5, 3,4, 5, 4, 4, 4];
+//      n = arr.length;
+//    let maxCount = 0;
+//    let index = -1;
+//     let count =0;
+//    for(let i=0;  i< n; i++){
+
+//      for(let j=i+1; j <n; j++){
+//         if(arr[i] == arr[j])
+//         {
+//           count += 1;
+//       }
+//      }
+//      if(count > maxCount){
+//       maxCount = count;
+//       index = i;
+//      }
+//    }
+
+//    if(maxCount > n/2)
+//    {
+//     console.log(arr[index]);
+//     document.write("Majority Elements is "+" "+arr[index])
+//    }else{
+//         console.log("No majority Elements")
+//         document.write("No majority Elements")
+//    }
+//   // console.log("Array frequency count"+" "+ temp);
+//   // document.write("Array frequency count"+" "+ temp)
+// }
+
+// let arr = [3, 4, 5, 3, 2, 5, 4, 4, 3, 4, 6];
+// let n= arr.length;
+// MajorityEle(arr, n);
+
+
+/** (((((((((((((((((((((((((((((((((((((()))))))))))))))))))))))))))))))))))))) */
+
+/** 
+ * Approach - Binary Search Tree
+ */
+
+function MajorityEle(){
+  debugger
+class Node {
+  constructor() {
+    this.key = 0;
+    this.count = 0;
+    this.left = null;
+    this.right = null ;
+
+  }
+}
+
+var majority = 0
+
+function newNode(item)
+{
+  var temp = new Node();
+  temp.key = item;
+  temp.count = 1;
+  temp.left = temp.right = null;
+  return temp;
+}
+
+function insert(node, key) 
+{
+  if(node == null){
+    if(majority == 0){
+      majority = 1;
+    }
+    return newNode(key);
+  }
+
+  if(key < node.key)
+  {
+    node.left = insert(node.left, key);
+  }else if(key > node.key)
+  {
+    node.right = insert(node.right, key);
+  }else{
+    node.count++;
+  }
+  majority = Math.max(ma, node.count);
+  return node;
+}
+function inorder(root, s) 
+{
+  if(root != null) {
+    inorder(root.left, s);
+  }
+  if(root.count > (s/2))
+  {
+    console.log(root.key + '\n');
+    document.write(root.key + '\n' )
+  }
+  inorder(root.right, s);
+}
+
+//Driver code 
+var a= [1, 3, 4, 3, 3, 3,3, 2];
+var size = a.length;
+var root = null;
+
+for(i=0; i< size; i++){
+  root = insert(root, a[i]);
+}
+
+if(majority > (size /2)){
+  inorder(root, size);
+}else{
+  console.log("No Majority belement founds");
+  document.write("No majority Elements found");
+}
+}
