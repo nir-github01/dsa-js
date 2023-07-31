@@ -211,76 +211,158 @@
  * Approach - Binary Search Tree
  */
 
-function MajorityEle(){
+// function MajorityEle(){
+//   debugger
+// class Node {
+//   constructor() {
+//     this.key = 0;
+//     this.count = 0;
+//     this.left = null;
+//     this.right = null ;
+
+//   }
+// }
+
+// var majority = 0
+
+// function newNode(item)
+// {
+//   var temp = new Node();
+//   temp.key = item;
+//   temp.count = 1;
+//   temp.left = temp.right = null;
+//   return temp;
+// }
+
+// function insert(node, key) 
+// {
+//   if(node == null){
+//     if(majority == 0){
+//       majority = 1;
+//     }
+//     return newNode(key);
+//   }
+
+//   if(key < node.key)
+//   {
+//     node.left = insert(node.left, key);
+//   }else if(key > node.key)
+//   {
+//     node.right = insert(node.right, key);
+//   }else{
+//     node.count++;
+//   }
+//   majority = Math.max(ma, node.count);
+//   return node;
+// }
+// function inorder(root, s) 
+// {
+//   if(root != null) {
+//     inorder(root.left, s);
+//   }
+//   if(root.count > (s/2))
+//   {
+//     console.log(root.key + '\n');
+//     document.write(root.key + '\n' )
+//   }
+//   inorder(root.right, s);
+// }
+
+// //Driver code 
+// var a= [1, 3, 4, 3, 3, 3,3, 2];
+// var size = a.length;
+// var root = null;
+
+// for(i=0; i< size; i++){
+//   root = insert(root, a[i]);
+// }
+
+// if(majority > (size /2)){
+//   inorder(root, size);
+// }else{
+//   console.log("No Majority belement founds");
+//   document.write("No majority Elements found");
+// }
+// }
+
+// function triplateArray(){
+//   debugger
+//   let arr =[1, 2, 3, 4, 5]
+//   let n = arr.length;
+//   let key =9
+//   let sum =0;
+//   let set = new Set();
+//   if(arr.length > 3){
+    
+//     for(let i=0; i< n ; i++){
+//        for(let j=i+1; j < n; j++){
+//          for(let k =j+1; k<n; k++){
+//             sum = arr[i] + arr[j] + arr[k]
+//             if(sum === key){
+//               set.i= arr[i]
+//               set.j=arr[j]
+//               set.k=arr[k]
+//             //  document.write("triplate array"+ JSON.stringify(set))
+//               console.log("triplate array"+ set)
+//             }
+//          }
+//        }
+//     }
+//   }else {
+//     return false
+//   }
+// }
+
+// let arr= [1, 2, 3, 4, 5];
+// let target = 9;
+// let n = arr.length;
+
+// function checkTriplates(arr, n , target, triplet){
+// debugger
+
+//   if(target ===0 && triplet.length === 3){
+//     console.log("Triplets"+ triplet);
+//     document.write(triplet)
+//     return true;
+//   }
+
+//   if(n ===0 || target < 0 ||  (triplet ? triplet.length === 3 : "")){
+//     return false;
+//   }
+
+//   return (checkTriplates(arr, n-1, target-arr[n-1], [...triplet, arr[n-1]]) || checkTriplates(arr, n-1, target, [...triplet]));
+
+//   }
+//   if(!checkTriplates(arr, n, target, [])){
+//     console.log("dosenot exist")
+//   }
+
+
+
+function arrayTriplets(arr, n, sum, target){
   debugger
-class Node {
-  constructor() {
-    this.key = 0;
-    this.count = 0;
-    this.left = null;
-    this.right = null ;
+   arr = [2, 3, 1, 4, 5, ];
+ n = arr.length ;
+ sum = 0;
+ target=9;
+  let l, r;
+arr.sort((a, b) => a - b);
+  for(let i=0; i< n - 2 ; i++){
+    l= i + 1;
+    r= n - 1;
 
-  }
-}
-
-var majority = 0
-
-function newNode(item)
-{
-  var temp = new Node();
-  temp.key = item;
-  temp.count = 1;
-  temp.left = temp.right = null;
-  return temp;
-}
-
-function insert(node, key) 
-{
-  if(node == null){
-    if(majority == 0){
-      majority = 1;
+    while(l< r){
+      sum = arr[i] + arr[l] + arr[r]
+      if(sum === target){
+        document.write("Triplet is ", arr[i], arr[l], arr[r]);
+        console.log("Triplet is ", arr[i], arr[l], arr[r]);
+        return true;
+      }else if(sum < target){
+        l++;
+      }else{
+        r--;
+      }
     }
-    return newNode(key);
   }
-
-  if(key < node.key)
-  {
-    node.left = insert(node.left, key);
-  }else if(key > node.key)
-  {
-    node.right = insert(node.right, key);
-  }else{
-    node.count++;
-  }
-  majority = Math.max(ma, node.count);
-  return node;
-}
-function inorder(root, s) 
-{
-  if(root != null) {
-    inorder(root.left, s);
-  }
-  if(root.count > (s/2))
-  {
-    console.log(root.key + '\n');
-    document.write(root.key + '\n' )
-  }
-  inorder(root.right, s);
-}
-
-//Driver code 
-var a= [1, 3, 4, 3, 3, 3,3, 2];
-var size = a.length;
-var root = null;
-
-for(i=0; i< size; i++){
-  root = insert(root, a[i]);
-}
-
-if(majority > (size /2)){
-  inorder(root, size);
-}else{
-  console.log("No Majority belement founds");
-  document.write("No majority Elements found");
-}
+  return false;
 }
