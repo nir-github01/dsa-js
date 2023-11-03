@@ -339,30 +339,31 @@
 
 
 
-function arrayTriplets(arr, n, sum, target){
-  debugger
-   arr = [2, 3, 1, 4, 5, ];
- n = arr.length ;
- sum = 0;
- target=9;
-  let l, r;
-arr.sort((a, b) => a - b);
-  for(let i=0; i< n - 2 ; i++){
-    l= i + 1;
-    r= n - 1;
+// function arrayTriplets(arr, n, sum, target){
+//   debugger
+//    arr = [2, 3, 1, 4, 5, ];
+//  n = arr.length ;
+//  sum = 0;
+//  target=9;
+//   let l, r;
+// arr.sort((a, b) => a - b);
+//   for(let i=0; i< n - 2 ; i++){
+//     l= i + 1;
+//     r= n - 1;
 
-    while(l< r){
-      sum = arr[i] + arr[l] + arr[r]
-      if(sum === target){
-        document.write("Triplet is ", arr[i], arr[l], arr[r]);
-        console.log("Triplet is ", arr[i], arr[l], arr[r]);
-        return true;
-      }else if(sum < target){
-        l++;
-      }else{
-        r--;
-      }
-    }
-  }
-  return false;
-}
+//     while(l< r){
+//       sum = arr[i] + arr[l] + arr[r]
+//       if(sum === target){
+//         document.write("Triplet is ", arr[i], arr[l], arr[r]);
+//         console.log("Triplet is ", arr[i], arr[l], arr[r]);
+//         return true;
+//       }else if(sum < target){
+//         l++;
+//       }else{
+//         r--;
+//       }
+//     }
+//   }
+//   return false;
+// }
+
